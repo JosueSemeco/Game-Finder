@@ -1,7 +1,5 @@
 package gameFinder;
 
-//Hola segunda prueba
-
 import java.awt.Color;
 
 import javax.swing.JFrame;
