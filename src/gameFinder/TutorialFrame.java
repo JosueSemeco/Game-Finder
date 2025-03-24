@@ -9,7 +9,7 @@ public class TutorialFrame extends JFrame{
 	
 	TutorialFrame() {
 		
-		this.setSize(700, 800);
+		this.setSize(900, 700);
 		this.setTitle("TUTORIAL");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(rootPane);
@@ -17,6 +17,10 @@ public class TutorialFrame extends JFrame{
 		this.setResizable(false);
 		this.setUndecorated(true);
 		this.setLayout(null);
+		
+		Tutorial tutorial = new Tutorial(this);
+		tutorial.setBounds(0, 0, 900, 700);
+		this.add(tutorial);
 		
 		this.setVisible(true);
 		
