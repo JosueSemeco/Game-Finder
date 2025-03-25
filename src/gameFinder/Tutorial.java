@@ -72,19 +72,41 @@ public class Tutorial extends JPanel implements ActionListener{
 		X2.setForeground(new Color(232, 39, 39));
 		this.add(X2);
 		
-		JLabel paso1 = new JLabel("SE TE PRESENTARA UNA PORTADA");
-		
+		JLabel paso1 = new JLabel("1. SE TE PRESENTARA UNA PORTADA");
+		paso1.setBounds(110, 100, 690, 40);
+		paso1.setFont(loadPixelFont("Hardpixel.OTF", 40));
+		paso1.setForeground(new Color(255, 255, 240));
+		this.add(paso1);
 		
 		JLabel paso11 = new JLabel("DE UN VIDEOJUEGO PIXELADA");
+		paso11.setBounds(185, 150, 550, 40);
+		paso11.setFont(loadPixelFont("Hardpixel.OTF", 40));
+		paso11.setForeground(new Color(255, 255, 240));
+		this.add(paso11);
 		
+		JLabel paso2 = new JLabel("2. TENDRAS 3 INTENTOS PARA ADIVINARLA");
+		paso2.setBounds(50, 250, 810, 40);
+		paso2.setFont(loadPixelFont("Hardpixel.OTF", 40));
+		paso2.setForeground(new Color(255, 255, 240));
+		this.add(paso2);
 		
-		JLabel paso2 = new JLabel("TENDRAS 3 OPORTUNIDADES PARA ADIVINARLA");
+		JLabel paso3 = new JLabel("3. SI ACIERTAS, APARECERA OTRA PORTADA");
+		paso3.setBounds(42, 350, 830, 40);
+		paso3.setFont(loadPixelFont("Hardpixel.OTF", 40));
+		paso3.setForeground(new Color(255, 255, 240));
+		this.add(paso3);
 		
+		JLabel paso4 = new JLabel("4. SI FALLAS LOS 3 INTENTOS,");
+		paso4.setBounds(175, 450, 900, 40);
+		paso4.setFont(loadPixelFont("Hardpixel.OTF", 40));
+		paso4.setForeground(new Color(255, 255, 240));
+		this.add(paso4);
 		
-		JLabel paso3 = new JLabel("SI ACIERTAS, APARECERA OTRA PORTADA");
-		
-		
-		JLabel paso4 = new JLabel("SI FALLAS LOS 3 INTENTOS, PERDERAS EL JUEGO");
+		JLabel paso5 = new JLabel("PERDERAS EL JUEGO");
+		paso5.setBounds(50, 500, 390, 40);
+		paso5.setFont(loadPixelFont("Hardpixel.OTF", 40));
+		paso5.setForeground(new Color(255, 255, 240));
+		this.add(paso5);
 		
 	}
 	
