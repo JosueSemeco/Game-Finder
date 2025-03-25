@@ -15,6 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 
 @SuppressWarnings("serial")
 public class User extends JPanel implements ActionListener{
@@ -27,7 +31,7 @@ public class User extends JPanel implements ActionListener{
 	@SuppressWarnings("unused")
 	private JFrame user;
 	public JTextField username;
-	//public String usuario = username.getText();
+	public String usuario = "";
 	
 public void paintComponent(Graphics g) {
 		
@@ -73,30 +77,29 @@ public void paintComponent(Graphics g) {
 		
 		// JTEXTFIELD PARA EL USUARIO
 		
-		username = new JTextField();
+		username = new JTextField("");
 		username.setBounds(150, 180, 400, 200);
 		username.setFont(loadPixelFont("Hardpixel.OTF", 200));
 		username.setForeground(new Color(255, 255, 240));
 		username.setBackground(new Color(35, 23, 59));
+		
+		((AbstractDocument) username.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                if (text != null) {
+                    super.replace(fb, offset, length, text.toUpperCase(), attrs);
+                }
+            }
+
+            @Override
+            public void insertString(FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                if (text != null) {
+                    super.insertString(fb, offset, text.toUpperCase(), attrs);
+                }
+            }
+        });
+		
 		this.add(username);
-		
-		// CONDICIONALES DEL USERNAME
-		
-		/*
-		if (usuario.length() > 3) {
-			
-			
-			
-		} else if (usuario.length() < 3) {
-			
-			
-			
-		} else if (usuario.isEmpty()) {
-			
-			
-			
-		}
-		*/
 		
 		// BOTON SUBMIT
 		
@@ -163,6 +166,27 @@ public void paintComponent(Graphics g) {
 			
 			user.dispose();
 			Main.frame.setEnabled(true);
+			
+		}
+		
+		if (e.getSource() == submit) {
+			
+			usuario = username.getText();
+			
+			if (usuario.length() > 3) {
+				
+				
+				
+			} else if (usuario.length() < 3) {
+				
+				
+				
+			} else {
+				
+				user.dispose();
+				Main.frame.setEnabled(true);
+				
+			}
 			
 		}
 		
