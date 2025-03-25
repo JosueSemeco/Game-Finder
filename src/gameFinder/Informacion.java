@@ -17,6 +17,8 @@ import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class Informacion extends JPanel implements ActionListener {
+	
+	
     
     int anchoVentana = Main.frame.getWidth(),
         altoVentana = Main.frame.getHeight();
@@ -214,6 +216,7 @@ public class Informacion extends JPanel implements ActionListener {
 		if (e.getSource() == X) {
 			
 			info.dispose();
+			Main.frame.setEnabled(true);
 			
 		}
 		

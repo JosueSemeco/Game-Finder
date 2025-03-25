@@ -151,6 +151,7 @@ public void paintComponent(Graphics g) {
 		} else if (e.getSource() == no) {
 			
 			salir.dispose();
+			Main.frame.setEnabled(true);
 			
 		}
 		

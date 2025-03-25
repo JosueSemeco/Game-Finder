@@ -184,6 +184,7 @@ public void paintComponent(Graphics g) {
 		jugar.setContentAreaFilled(false);
 		jugar.setFocusPainted(false);
 		jugar.setOpaque(false);
+		jugar.addActionListener(this);
 		this.add(jugar);
 		
 		JLabel jugar1 = new JLabel("JUGAR");
@@ -316,18 +317,28 @@ public void paintComponent(Graphics g) {
 		if (e.getSource() == info) {
 			
 			InformacionFrame info = new InformacionFrame();
+			Main.frame.setEnabled(false);
 			
 		}
 		
 		if (e.getSource() == salir) {
 			
 			SalirFrame salir = new SalirFrame();
+			Main.frame.setEnabled(false);
 			
 		}
 		
 		if (e.getSource() == tutorial) {
 			
 			TutorialFrame tutorial = new TutorialFrame();
+			Main.frame.setEnabled(false);
+			
+		}
+		
+		if (e.getSource() == jugar) {
+			
+			UserFrame user = new UserFrame();
+			Main.frame.setEnabled(false);
 			
 		}
 		

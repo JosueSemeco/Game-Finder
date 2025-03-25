@@ -85,25 +85,25 @@ public class Tutorial extends JPanel implements ActionListener{
 		this.add(paso11);
 		
 		JLabel paso2 = new JLabel("2. TENDRAS 3 INTENTOS PARA ADIVINARLA");
-		paso2.setBounds(50, 250, 810, 40);
+		paso2.setBounds(50, 260, 810, 40);
 		paso2.setFont(loadPixelFont("Hardpixel.OTF", 40));
 		paso2.setForeground(new Color(255, 255, 240));
 		this.add(paso2);
 		
 		JLabel paso3 = new JLabel("3. SI ACIERTAS, APARECERA OTRA PORTADA");
-		paso3.setBounds(42, 350, 830, 40);
+		paso3.setBounds(42, 385, 830, 40);
 		paso3.setFont(loadPixelFont("Hardpixel.OTF", 40));
 		paso3.setForeground(new Color(255, 255, 240));
 		this.add(paso3);
 		
 		JLabel paso4 = new JLabel("4. SI FALLAS LOS 3 INTENTOS,");
-		paso4.setBounds(175, 450, 900, 40);
+		paso4.setBounds(150, 500, 900, 40);
 		paso4.setFont(loadPixelFont("Hardpixel.OTF", 40));
 		paso4.setForeground(new Color(255, 255, 240));
 		this.add(paso4);
 		
 		JLabel paso5 = new JLabel("PERDERAS EL JUEGO");
-		paso5.setBounds(50, 500, 390, 40);
+		paso5.setBounds(250, 550, 390, 40);
 		paso5.setFont(loadPixelFont("Hardpixel.OTF", 40));
 		paso5.setForeground(new Color(255, 255, 240));
 		this.add(paso5);
@@ -133,6 +133,7 @@ public class Tutorial extends JPanel implements ActionListener{
 		if (e.getSource() == X) {
 			
 			tutorial.dispose();
+			Main.frame.setEnabled(true);
 			
 		}
 		
