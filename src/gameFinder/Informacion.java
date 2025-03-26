@@ -34,7 +34,7 @@ public class Informacion extends JPanel implements ActionListener {
     int deltaY = 5, fuente = 50;
     
     @SuppressWarnings("unused")
-    private JFrame info;
+    public JFrame info;
     
     public void paintComponent(Graphics g) {
     	

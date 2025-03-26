@@ -21,7 +21,7 @@ public class Tutorial extends JPanel implements ActionListener{
 	        altoVentana = Main.frame.getHeight();
 	
 	@SuppressWarnings("unused")
-	private JFrame tutorial;
+	public JFrame tutorial;
 	
 	JButton X;
 	

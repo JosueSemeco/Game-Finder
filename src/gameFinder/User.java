@@ -29,7 +29,7 @@ public class User extends JPanel implements ActionListener{
 	JButton X, submit;
 	
 	@SuppressWarnings("unused")
-	private JFrame user;
+	public static JFrame user;
 	public JTextField username;
 	public String usuario = "";
 	
@@ -49,6 +49,7 @@ public void paintComponent(Graphics g) {
 		
 	}
 	
+	@SuppressWarnings("static-access")
 	User(JFrame user) {
 		
 		this.user = user;
@@ -58,22 +59,42 @@ public void paintComponent(Graphics g) {
 		// LABEL TEXTO
 		
 		JLabel ingrese = new JLabel("INGRESE USUARIO:");
-		ingrese.setBounds(130, 80, 430, 50);
+		ingrese.setBounds(130, 50, 430, 50);
 		ingrese.setFont(loadPixelFont("Hardpixel.OTF", 50));
 		ingrese.setForeground(new Color(255, 255, 240));
 		this.add(ingrese);
 		
 		JLabel ingrese1 = new JLabel("INGRESE USUARIO:");
-		ingrese1.setBounds(135, 85, 430, 50);
+		ingrese1.setBounds(135, 55, 430, 50);
 		ingrese1.setFont(loadPixelFont("Hardpixel.OTF", 50));
 		ingrese1.setForeground(new Color(227, 212, 75));
 		this.add(ingrese1);
 		
 		JLabel ingrese2 = new JLabel("INGRESE USUARIO:");
-		ingrese2.setBounds(140, 90, 430, 50);
+		ingrese2.setBounds(140, 60, 430, 50);
 		ingrese2.setFont(loadPixelFont("Hardpixel.OTF", 50));
 		ingrese2.setForeground(new Color(232, 39, 39));
 		this.add(ingrese2);
+		
+		// LABEL TEXTO 2
+		
+		JLabel letras = new JLabel("(USUARIO DE 3 LETRAS)");
+		letras.setBounds(200, 110, 430, 25);
+		letras.setFont(loadPixelFont("Hardpixel.OTF", 25));
+		letras.setForeground(new Color(255, 255, 240));
+		this.add(letras);
+		
+		JLabel letras1 = new JLabel("(USUARIO DE 3 LETRAS)");
+		letras1.setBounds(203, 113, 430, 25);
+		letras1.setFont(loadPixelFont("Hardpixel.OTF", 25));
+		letras1.setForeground(new Color(227, 212, 75));
+		this.add(letras1);
+		
+		JLabel letras2 = new JLabel("(USUARIO DE 3 LETRAS)");
+		letras2.setBounds(206, 116, 430, 25);
+		letras2.setFont(loadPixelFont("Hardpixel.OTF", 25));
+		letras2.setForeground(new Color(232, 39, 39));
+		this.add(letras2);
 		
 		// JTEXTFIELD PARA EL USUARIO
 		
@@ -159,6 +180,7 @@ public void paintComponent(Graphics g) {
         
     }
 
+	@SuppressWarnings("unused")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -175,16 +197,18 @@ public void paintComponent(Graphics g) {
 			
 			if (usuario.length() > 3) {
 				
-				
+				WrongUserFrame wrong = new WrongUserFrame();
+				User.user.setEnabled(false);
 				
 			} else if (usuario.length() < 3) {
 				
-				
+				WrongUserFrame wrong = new WrongUserFrame();
+				User.user.setEnabled(false);
 				
 			} else {
 				
 				user.dispose();
-				Main.frame.setEnabled(true);
+				JugarFrame jugar = new JugarFrame();
 				
 			}
 			

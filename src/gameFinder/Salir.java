@@ -22,7 +22,7 @@ public class Salir extends JPanel implements ActionListener{
 	
 	JButton si, no;
 	
-	private JFrame salir;
+	public JFrame salir;
 	
 public void paintComponent(Graphics g) {
 		
