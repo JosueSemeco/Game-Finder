@@ -30,8 +30,8 @@ public class User extends JPanel implements ActionListener{
 	
 	@SuppressWarnings("unused")
 	public static JFrame user;
-	public JTextField username;
-	public String usuario = "";
+	public static JTextField username;
+	public static String usuario = "";
 	
 public void paintComponent(Graphics g) {
 		

@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class Jugar extends JPanel implements ActionListener{
@@ -22,7 +23,10 @@ public class Jugar extends JPanel implements ActionListener{
 	
 	public JFrame jugar;
 	
-	JButton X;
+	public static JTextField juego;
+	public static String nombreJuego = "";
+	public static JButton X;
+	public static int puntos = 0;
 	
 public void paintComponent(Graphics g) {
 		
@@ -45,6 +49,8 @@ public void paintComponent(Graphics g) {
 		this.jugar = jugar;
 		this.setBackground(new Color(35, 23, 59));
 		this.setLayout(null);
+		
+		// BOTON X
 		
 		X = new JButton("X");
         X.setBounds(1220, 20, 30, 50);
@@ -70,6 +76,32 @@ public void paintComponent(Graphics g) {
 		X2.setFont(loadPixelFont("Hardpixel.OTF", 50));
 		X2.setForeground(new Color(232, 39, 39));
 		this.add(X2);
+		
+		// LABEL USUARIO 
+		
+		JLabel usuario = new JLabel("USER: " + User.usuario);
+		usuario.setBounds(25, 25, 175, 30);
+		usuario.setFont(loadPixelFont("Hardpixel.OTF", 30));
+		usuario.setForeground(new Color(255, 255, 240));
+		this.add(usuario);
+		
+		// LABEL PUNTUACION
+		
+		JLabel puntuacion = new JLabel("PUNTUACION: " + puntos);
+		puntuacion.setBounds(25, 60, 215, 30);
+		puntuacion.setFont(loadPixelFont("Hardpixel.OTF", 30));
+		puntuacion.setForeground(new Color(255, 255, 240));
+		this.add(puntuacion);
+		
+		// TEXT FIELD NOMBRE DEL JUEGO
+		
+		// LABEL ?????
+		
+		JLabel nombreOculto = new JLabel("?????????");
+		nombreOculto.setBounds(400, 400, 200, 40);
+		nombreOculto.setFont(loadPixelFont("Hardpixel.OTF", 40));
+		nombreOculto.setForeground(new Color(255, 255, 240));
+		this.add(nombreOculto);
 		
 	}
 	
