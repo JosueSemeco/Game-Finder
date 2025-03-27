@@ -197,7 +197,7 @@ public class Informacion extends JPanel implements ActionListener {
     	
         try {
         	
-            File fontFile = new File("fonts/" + fontFileName);
+            File fontFile = new File("src/fonts/" + fontFileName);
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
             return font.deriveFont(size);
             
