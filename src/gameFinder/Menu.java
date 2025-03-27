@@ -281,7 +281,7 @@ public void paintComponent(Graphics g) {
 		
 		// BUTTON INFO
 		
-		ImageIcon inf = new ImageIcon("src/img/ICONOS/info.png");
+		ImageIcon inf = new ImageIcon("img/ICONOS/info.png");
 		info = new JButton(inf);
 		info.setBounds(1150, 690, 100, 101);
 		info.setBorderPainted(false);
@@ -297,7 +297,7 @@ public void paintComponent(Graphics g) {
 		
         try {
             
-            File fontFile = new File("src/fonts/" + fontFileName);
+            File fontFile = new File("fonts/" + fontFileName);
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
             return font.deriveFont(size);
             

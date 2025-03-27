@@ -20,7 +20,7 @@ public class Main {
 		frame.setUndecorated(true);
 		frame.getContentPane().setBackground(Color.black);
 		
-		ImageIcon icon = new ImageIcon("src/img/ICONOS/icon.png");
+		ImageIcon icon = new ImageIcon("img/ICONOS/icon.png");
 		frame.setIconImage(icon.getImage());
 		
 		Menu menu = new Menu();

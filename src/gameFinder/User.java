@@ -124,7 +124,7 @@ public void paintComponent(Graphics g) {
 		
 		// BOTON SUBMIT
 		
-		ImageIcon sub = new ImageIcon("src/img/ICONOS/submit.png");
+		ImageIcon sub = new ImageIcon("img/ICONOS/submit.png");
 		submit = new JButton(sub);
 		submit.setBounds(315, 405, 64, 64);
 		submit.setBorderPainted(false);
@@ -167,7 +167,7 @@ public void paintComponent(Graphics g) {
 		
         try {
             
-            File fontFile = new File("src/fonts/" + fontFileName);
+            File fontFile = new File("fonts/" + fontFileName);
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
             return font.deriveFont(size);
             

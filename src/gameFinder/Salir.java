@@ -128,7 +128,7 @@ public void paintComponent(Graphics g) {
 		
         try {
             
-            File fontFile = new File("src/fonts/" + fontFileName);
+            File fontFile = new File("fonts/" + fontFileName);
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
             return font.deriveFont(size);
             
