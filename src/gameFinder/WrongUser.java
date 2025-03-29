@@ -116,6 +116,10 @@ public void paintComponent(Graphics g) {
 			
 			wrong.dispose();
 			User.user.setEnabled(true);
+			Main.frame.toFront();
+			Main.frame.requestFocus();
+			User.user.toFront();
+			User.user.requestFocus();
 			
 		}
 		

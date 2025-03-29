@@ -21,7 +21,7 @@ public class Tutorial extends JPanel implements ActionListener{
 	        altoVentana = Main.frame.getHeight();
 	
 	@SuppressWarnings("unused")
-	public JFrame tutorial;
+	public static JFrame tutorial;
 	
 	JButton X;
 	
@@ -41,6 +41,7 @@ public class Tutorial extends JPanel implements ActionListener{
         
     }
 	
+	@SuppressWarnings("static-access")
 	Tutorial(JFrame tutorial) {
 		
 		this.tutorial = tutorial;
@@ -134,6 +135,8 @@ public class Tutorial extends JPanel implements ActionListener{
 			
 			tutorial.dispose();
 			Main.frame.setEnabled(true);
+			Main.frame.toFront();
+			Main.frame.requestFocus();
 			
 		}
 		

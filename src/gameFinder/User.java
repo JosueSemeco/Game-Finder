@@ -188,6 +188,8 @@ public void paintComponent(Graphics g) {
 			
 			user.dispose();
 			Main.frame.setEnabled(true);
+			Main.frame.toFront();
+			Main.frame.requestFocus();
 			
 		}
 		
@@ -208,6 +210,8 @@ public void paintComponent(Graphics g) {
 			} else {
 				
 				user.dispose();
+				Main.frame.toFront();
+				Main.frame.requestFocus();
 				JugarFrame jugar = new JugarFrame();
 				
 			}

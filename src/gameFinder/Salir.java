@@ -152,6 +152,8 @@ public void paintComponent(Graphics g) {
 			
 			salir.dispose();
 			Main.frame.setEnabled(true);
+			Main.frame.toFront();
+			Main.frame.requestFocus();
 			
 		}
 		

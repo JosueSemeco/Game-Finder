@@ -217,6 +217,8 @@ public class Informacion extends JPanel implements ActionListener {
 			
 			info.dispose();
 			Main.frame.setEnabled(true);
+			Main.frame.toFront();
+			Main.frame.requestFocus();
 			
 		}
 		
