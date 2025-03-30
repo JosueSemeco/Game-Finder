@@ -29,7 +29,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -200,7 +199,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         juegoActual = seleccionarJuegoAleatorio();
         if (juegoActual == null) {
             JOptionPane.showMessageDialog(this, "No hay juegos disponibles.");
-            regresarAlMenu();
+            //regresarAlMenu();
         } else {
             // Nombre oculto del juego
             String textoOculto = ocultarNombre(juegoActual);
@@ -326,7 +325,8 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
     }
 
     // Verifica si la respuesta ingresada es correcta
-    private void verificarRespuesta() {
+    @SuppressWarnings("unused")
+	private void verificarRespuesta() {
         String respuesta = input.getText().trim().toUpperCase();
 
         if (juegoActual != null && juegos.containsKey(juegoActual) && juegos.get(juegoActual).equals(respuesta)) {
@@ -341,9 +341,9 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             vidas--;
             actualizarVidas();
             if (vidas == 0) {
-                JOptionPane.showMessageDialog(this, "¡Perdiste! Volviendo al menú...");
+                DefeatFrame def = new DefeatFrame();
                 guardarResultado(User.usuario, puntaje);
-                regresarAlMenu();
+                //regresarAlMenu();
             }
         }
         input.setText(""); // Limpiar el campo después de enviar
@@ -392,7 +392,8 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
     }
 
     // Cargar un nuevo juego
-    private void siguienteJuego() {
+    @SuppressWarnings("unused")
+	private void siguienteJuego() {
         juegoActual = seleccionarJuegoAleatorio();
         if (juegoActual != null) {
             actualizarTextoLabel(nombreOculto, ocultarNombre(juegoActual));
@@ -403,14 +404,14 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             siguiente.setVisible(false);
             enviar.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "¡Felicidades! Has adivinado todos los juegos.");
+            CongratsFrame win = new CongratsFrame();
             guardarResultado(User.usuario, puntaje);
-            regresarAlMenu();
+            //regresarAlMenu();
         }
     }
-
+/*
     // Regresar al menú principal
-    private void regresarAlMenu() {
+    public void regresarAlMenu() {
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         if (frame != null) {
             frame.dispose();
@@ -419,7 +420,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         Main.frame.requestFocus();
         Main.frame.setEnabled(true);
     }
-
+*/
     private Font loadPixelFont(String fontFileName, float size) {
 
         try {

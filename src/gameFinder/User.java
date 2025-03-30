@@ -107,14 +107,14 @@ public void paintComponent(Graphics g) {
 		((AbstractDocument) username.getDocument()).setDocumentFilter(new DocumentFilter() {
             @Override
             public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-                if (text != null) {
+                if (text != null && text.matches("[a-zA-Z]+")) {
                     super.replace(fb, offset, length, text.toUpperCase(), attrs);
                 }
             }
 
             @Override
             public void insertString(FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
-                if (text != null) {
+                if (text != null && text.matches("[a-zA-Z]+")) {
                     super.insertString(fb, offset, text.toUpperCase(), attrs);
                 }
             }

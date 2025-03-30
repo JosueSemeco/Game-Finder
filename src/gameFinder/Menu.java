@@ -238,6 +238,7 @@ public void paintComponent(Graphics g) {
 		record.setContentAreaFilled(false);
 		record.setFocusPainted(false);
 		record.setOpaque(false);
+		record.addActionListener(this);
 		this.add(record);
 				
 		JLabel record1 = new JLabel("RECORD");
@@ -338,6 +339,13 @@ public void paintComponent(Graphics g) {
 		if (e.getSource() == jugar) {
 			
 			UserFrame user = new UserFrame();
+			Main.frame.setEnabled(false);
+			
+		}
+		
+		if (e.getSource() == record) {
+			
+			RecordFrame record = new RecordFrame();
 			Main.frame.setEnabled(false);
 			
 		}

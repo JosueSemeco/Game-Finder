@@ -5,9 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DB_Connection {
-    private static final String DB_URL = "jdbc:sqlite:src/database.db";  // Ruta relativa a la base de datos
+    private static final String DB_URL = "jdbc:sqlite:database.db";  // Ruta relativa a la base de datos
 
     public static Connection connect() {
         Connection conn = null;
@@ -61,5 +63,61 @@ public class DB_Connection {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static List<UserScore> getUserScores() {
+        String sql = "SELECT id, usuario, puntuacion FROM Record ORDER BY puntuacion DESC";
+        List<UserScore> userScores = new ArrayList<>();
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String usuario = rs.getString("usuario");
+                int puntuacion = rs.getInt("puntuacion");
+                userScores.add(new UserScore(id, usuario, puntuacion));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return userScores;
+    }
+
+    public static void deleteUserScore(int id) {
+        String sql = "DELETE FROM Record WHERE id = ?";
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+class UserScore {
+    private int id;
+    private String usuario;
+    private int puntuacion;
+
+    public UserScore(int id, String usuario, int puntuacion) {
+        this.id = id;
+        this.usuario = usuario;
+        this.puntuacion = puntuacion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public int getPuntuacion() {
+        return puntuacion;
     }
 }
