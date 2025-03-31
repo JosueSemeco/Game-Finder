@@ -27,4 +27,4 @@ Expandir mis conocimientos en Java y la elaboracion de GUI utilizando la bibliot
 <h1>Archivo Ejecutable</h1>
 Para la ejecucion del juego sin la necesidad del entorno de Java (JDK y JRE), ingrese en el siguiente link para descargar el archivo .rar que contiene el .exe de la aplicacion:
 
-https://www.mediafire.com/file/mo6wiyri5noibwo/GameFinder.rar/file
+https://www.mediafire.com/file/mjco3oxjp47w5d7/GameFinder.rar/file
