@@ -22,9 +22,4 @@ Al ingresar en este modulo, se te presentaran dos opciones seguidas por un texto
 Esta representado mediante un icono azul con un signo de exclamacion (!) en su interior, al hacer clic en este modulo, se presentaran en forma de creditos de pelicula (idea extraida de Star Wars) los participantes en este proyecto y la seccion y profesor que evalua el proyecto.
 
 <h1>Que se busca lograr con este proyecto?</h1>
-Expandir mis conocimientos en Java y la elaboracion de GUI utilizando la biblioteca javax.swing, logrando asi la creacion del entorno grafico deseado e imaginado
-
-<h1>Archivo Ejecutable</h1>
-Para la ejecucion del juego sin la necesidad del entorno de Java (JDK y JRE), ingrese en el siguiente link para descargar el archivo .rar que contiene el .exe de la aplicacion:
-
-https://www.mediafire.com/file/mjco3oxjp47w5d7/GameFinder.rar/file
+Expandir mis conocimientos en Java y la elaboracion de GUI utilizando la biblioteca javax.swing, logrando asi la creacion del entorno grafico deseado e imaginado\
