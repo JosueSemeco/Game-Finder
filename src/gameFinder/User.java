@@ -8,7 +8,6 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -28,7 +27,6 @@ public class User extends JPanel implements ActionListener{
 	
 	JButton X, submit;
 	
-	@SuppressWarnings("unused")
 	public static JFrame user;
 	public static JTextField username;
 	public static String usuario = "";

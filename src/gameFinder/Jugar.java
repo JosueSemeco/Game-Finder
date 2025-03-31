@@ -124,27 +124,37 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         // LABEL CORAZONES
 
         corazones = new JLabel[3];
+        
         for (int i = 0; i < 3; i++) {
+        	
             try {
+            	
                 corazones[i] = new JLabel(new ImageIcon("img/ICONOS/fillHeart.png"));
                 corazones[i].setBounds(535 + (i * 70), 20, 66, 61); // Ajustado para que no se superpongan
                 this.add(corazones[i]);
+                
             } catch (Exception e) {
+            	
                 e.printStackTrace();
                 corazones[i] = new JLabel("?");
                 corazones[i].setBounds(320 + (i * 70), 10, 66, 61);
                 corazones[i].setForeground(Color.RED);
                 this.add(corazones[i]);
+                
             }
+            
         }
 
         // Inicializar juegos
+        
         inicializarJuegos();
 
         // Inicializar juegos usados
+        
         juegosUsados = new HashSet<>();
 
         // Campo de texto con autocompletado
+        
         input = new JTextField();
         input.setBounds(490, 700, 300, 60);
         input.setFont(loadPixelFont("Hardpixel.OTF", 40));
@@ -153,24 +163,35 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         input.addKeyListener(this);
 
         ((AbstractDocument) input.getDocument()).setDocumentFilter(new DocumentFilter() {
+        	
             @Override
             public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+            	
                 if (text != null) {
+                	
                     super.replace(fb, offset, length, text.toUpperCase(), attrs);
+                    
                 }
+                
             }
 
             @Override
             public void insertString(FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+            	
                 if (text != null) {
+                	
                     super.insertString(fb, offset, text.toUpperCase(), attrs);
+                    
                 }
+                
             }
+            
         });
 
         this.add(input);
 
         // Etiqueta de sugerencia
+        
         sugerenciaLabel = new JLabel("");
         sugerenciaLabel.setBounds(495, 765, 400, 30);
         sugerenciaLabel.setFont(loadPixelFont("Hardpixel.OTF", 20));
@@ -178,30 +199,48 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         this.add(sugerenciaLabel);
 
         // Etiqueta de portada
+        
         portadaLabel = new JLabel();
         portadaLabel.setBounds(440, 100, 400, 500);
         this.add(portadaLabel);
 
         // Botón de enviar
-        enviar = new JButton("Adivinar");
-        enviar.setBounds(920, 350, 100, 100);
+        
+        ImageIcon guess = new ImageIcon("img/ICONOS/guess.png");
+        enviar = new JButton(guess);
+        enviar.setBounds(920, 350, 180, 100);
+        enviar.setBorderPainted(false);
+        enviar.setContentAreaFilled(false);
+        enviar.setFocusPainted(false);
+        enviar.setOpaque(false);
         enviar.addActionListener(this);
         this.add(enviar);
 
         // Botón de siguiente
-        siguiente = new JButton("Siguiente");
+        
+        ImageIcon arrow = new ImageIcon("img/ICONOS/arrowNext.png");
+        siguiente = new JButton(arrow);
         siguiente.setBounds(920, 500, 100, 100);
+        siguiente.setBorderPainted(false);
+        siguiente.setContentAreaFilled(false);
+        siguiente.setFocusPainted(false);
+        siguiente.setOpaque(false);
         siguiente.addActionListener(this);
         siguiente.setVisible(false);
         this.add(siguiente);
 
         // Seleccionar juego aleatorio
+        
         juegoActual = seleccionarJuegoAleatorio();
+        
         if (juegoActual == null) {
+        	
             JOptionPane.showMessageDialog(this, "No hay juegos disponibles.");
-            //regresarAlMenu();
+
         } else {
+        	
             // Nombre oculto del juego
+        	
             String textoOculto = ocultarNombre(juegoActual);
             nombreOculto = new JLabel(textoOculto);
             nombreOculto.setFont(loadPixelFont("Hardpixel.OTF", 30));
@@ -210,16 +249,22 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             this.add(nombreOculto);
 
             // Mostrar la portada del juego inicial
+            
             mostrarPortada(juegoActual);
+            
         }
+        
     }
 
     // Método para actualizar el texto del JLabel y centrarlo
+    
     private void actualizarTextoLabel(JLabel label, String nuevoTexto) {
+    	
         label.setText(nuevoTexto);
         label.setFont(loadPixelFont("Hardpixel.OTF", 30));
         
         // Recalcular el tamaño preferido
+        
         size = label.getPreferredSize();
         label.setSize(size.width, size.height); // Establecer tamaño preferido
 
@@ -227,67 +272,106 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         y = 635;
 
         // Establecer la posición del JLabel
+        
         label.setLocation(x, y);
 
         // Revalidate y Repaint
+        
         label.revalidate();
         label.repaint();
     }
 
     // Inicializar lista de juegos
+    
     private void inicializarJuegos() {
+    	
         juegos = new TreeMap<>();
         File carpeta = new File("img/PORTADAS NORMALES/");
+        
         if (carpeta.exists() && carpeta.isDirectory()) {
+        	
             for (File archivo : carpeta.listFiles()) {
+            	
                 if (archivo.isFile() && archivo.getName().endsWith(".jpg")) {
+                	
                     String nombreJuego = archivo.getName().replace(".jpg", "").toUpperCase();
                     juegos.put(nombreJuego, nombreJuego);
+                    
                 }
+                
             }
+            
         }
+        
     }
 
     // Selecciona un juego aleatorio de la lista que no haya sido usado
+    
     private String seleccionarJuegoAleatorio() {
+    	
         List<String> keys = new ArrayList<>(juegos.keySet());
         keys.removeAll(juegosUsados);
+        
         if (keys.isEmpty()) {
+        	
             return null;
         }
+        
         String juego = keys.get(new Random().nextInt(keys.size()));
         juegosUsados.add(juego);
         return juego;
+        
     }
 
     // Muestra la portada del juego
+    
     private void mostrarPortada(String juego) {
+    	
         String ruta = "img/PORTADAS NORMALES/";
+        
         try {
+        	
             File archivo = new File(ruta + juego + ".jpg");
+            
             if (!archivo.exists()) {
+            	
                 throw new IOException("Archivo no encontrado: " + archivo.getAbsolutePath());
             }
+            
             Image image = ImageIO.read(archivo);
             Image scaledImage = image.getScaledInstance(portadaLabel.getWidth(), portadaLabel.getHeight(), Image.SCALE_SMOOTH);
             portadaLabel.setIcon(new ImageIcon(scaledImage));
+            
             // Asegurarse de que la portadaLabel sea visible y esté por encima de las imágenes pixeladas
+            
             portadaLabel.setVisible(true);
             this.setComponentZOrder(portadaLabel, 0);
+            
             // Cargar y colocar las imágenes pixeladas
+            
             cargarImagenesPixeladas(juego);
+            
         } catch (IOException e) {
+        	
             e.printStackTrace();
             portadaLabel.setText("No se pudo cargar la portada.");
+            
         }
+        
     }
 
     // Carga y coloca las imágenes pixeladas sobre la portada
+    
     private void cargarImagenesPixeladas(String juego) {
+    	
         // Remover etiquetas de tiles anteriores
+    	
         for (JLabel tileLabel : tileLabels) {
+        	
             this.remove(tileLabel);
+            
         }
+        
         tileLabels.clear();
 
         String rutaPixeladas = "img/PORTADAS PIXELADAS/" + juego + "/";
@@ -295,12 +379,18 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         int tileHeight = portadaLabel.getHeight() / 4;
         
         for (int i = 1; i <= 4; i++) {
+        	
             for (int j = 1; j <= 4; j++) {
+            	
                 try {
+                	
                     String tileName = String.format("fila-%d-columna-%d.jpg", i, j);
                     File archivoPixelado = new File(rutaPixeladas + tileName);
+                    
                     if (!archivoPixelado.exists()) {
+                    	
                         throw new IOException("Archivo pixelado no encontrado: " + archivoPixelado.getAbsolutePath());
+                    
                     }
                     Image image = ImageIO.read(archivoPixelado);
                     Image scaledImage = image.getScaledInstance(tileWidth, tileHeight, Image.SCALE_SMOOTH);
@@ -309,58 +399,94 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
                     this.add(tileLabel);
                     tileLabels.add(tileLabel);
                     this.setComponentZOrder(tileLabel, 0); // Asegurarse de que las imágenes pixeladas estén por encima de la portada original
+                    
                 } catch (IOException e) {
+                	
                     e.printStackTrace();
+                    
                 }
+                
             }
+            
         }
+        
         // Actualizar el panel para mostrar las nuevas etiquetas de tiles
+        
         this.revalidate();
         this.repaint();
+        
     }
 
     // Oculta el nombre del juego con "?"
+    
     private String ocultarNombre(String nombre) {
+    	
         return nombre.replaceAll("[A-Za-z0-9]", "?");
+        
     }
 
     // Verifica si la respuesta ingresada es correcta
+    
     @SuppressWarnings("unused")
 	private void verificarRespuesta() {
+    	
         String respuesta = input.getText().trim().toUpperCase();
 
         if (juegoActual != null && juegos.containsKey(juegoActual) && juegos.get(juegoActual).equals(respuesta)) {
+        	
             puntaje += vidas;  // Suma puntos según las vidas
+            
             // Mostrar la portada en buena calidad y revelar el nombre del juego
+            
             mostrarPortadaNormal(juegoActual);
             actualizarTextoLabel(nombreOculto, juegoActual);
+            
             // Ocultar el botón de enviar y mostrar el botón de siguiente
+            
             enviar.setVisible(false);
             siguiente.setVisible(true);
+            
         } else {
+        	
             vidas--;
             actualizarVidas();
+            
             if (vidas == 0) {
+            	
                 DefeatFrame def = new DefeatFrame();
                 guardarResultado(User.usuario, puntaje);
-                //regresarAlMenu();
+                
+                
             }
+            
         }
+        
         input.setText(""); // Limpiar el campo después de enviar
+        
     }
 
     // Método para guardar el resultado en la base de datos
+    
     private void guardarResultado(String usuario, int puntaje) {
+    	
         DB_Connection.updateScoreIfHigher(usuario, puntaje);
+        
     }
 
     // Mostrar la portada normal del juego
+    
     private void mostrarPortadaNormal(String juego) {
+    	
         String ruta = "img/PORTADAS NORMALES/";
+        
         try {
+        	
             File archivo = new File(ruta + juego + ".jpg");
+            
             if (!archivo.exists()) {
+            	
                 throw new IOException("Archivo no encontrado: " + archivo.getAbsolutePath());
+            
             }
             Image image = ImageIO.read(archivo);
             Image scaledImage = image.getScaledInstance(portadaLabel.getWidth(), portadaLabel.getHeight(), Image.SCALE_SMOOTH);
@@ -368,19 +494,28 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             // Asegurarse de que la portadaLabel sea visible y esté por encima de las imágenes pixeladas
             portadaLabel.setVisible(true);
             this.setComponentZOrder(portadaLabel, 0);
+        
         } catch (IOException e) {
+        	
             e.printStackTrace();
             portadaLabel.setText("No se pudo cargar la portada.");
+            
         }
+        
     }
 
     // Actualiza las imágenes de las vidas y elimina una imagen aleatoria
+    
     private void actualizarVidas() {
+    	
         for (int i = 0; i < 3; i++) {
+        	
             corazones[i].setIcon(new ImageIcon(i < vidas ? "img/ICONOS/fillHeart.png" : "img/ICONOS/emptyHeart.png"));
+       
         }
 
         if (tileLabels.size() > 0) {
+        	
             Random random = new Random();
             int index = random.nextInt(tileLabels.size());
             JLabel tileLabel = tileLabels.remove(index);
@@ -388,14 +523,20 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             // Actualizar el panel para reflejar la eliminación de la imagen
             this.revalidate();
             this.repaint();
+            
         }
+        
     }
 
     // Cargar un nuevo juego
+    
     @SuppressWarnings("unused")
 	private void siguienteJuego() {
+    	
         juegoActual = seleccionarJuegoAleatorio();
+        
         if (juegoActual != null) {
+        	
             actualizarTextoLabel(nombreOculto, ocultarNombre(juegoActual));
             puntajeLabel.setText("PUNTAJE: " + puntaje);
             actualizarVidas();
@@ -403,24 +544,16 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             // Ocultar el botón de siguiente y mostrar el botón de enviar
             siguiente.setVisible(false);
             enviar.setVisible(true);
+        
         } else {
+        	
             CongratsFrame win = new CongratsFrame();
             guardarResultado(User.usuario, puntaje);
-            //regresarAlMenu();
+            
         }
+        
     }
-/*
-    // Regresar al menú principal
-    public void regresarAlMenu() {
-        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        if (frame != null) {
-            frame.dispose();
-        }
-        Main.frame.toFront();
-        Main.frame.requestFocus();
-        Main.frame.setEnabled(true);
-    }
-*/
+    
     private Font loadPixelFont(String fontFileName, float size) {
 
         try {
@@ -442,30 +575,38 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == X) {
+        	
             jugar.dispose();
             Main.frame.setEnabled(true);
             Main.frame.toFront();
             Main.frame.requestFocus();
+            
         }
 
         if (e.getSource() == enviar) {
+        	
             verificarRespuesta();
+            
         }
 
         if (e.getSource() == siguiente) {
+        	
             siguienteJuego();
+            
         }
 
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
+    	
         // TODO Auto-generated method stub
 
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
+    	
         // TODO Auto-generated method stub
 
     }
@@ -475,13 +616,20 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
 
         String texto = input.getText().toUpperCase();
         sugerenciaLabel.setText("");
+        
         if (texto.length() > 0) {
+        	
             for (String juego : juegos.keySet()) {
+            	
                 if (juego.startsWith(texto)) {
+                	
                     sugerenciaLabel.setText(juego);
                     break;
+                    
                 }
+                
             }
+            
         }
 
     }

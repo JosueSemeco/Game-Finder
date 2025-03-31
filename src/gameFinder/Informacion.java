@@ -8,7 +8,6 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,7 +32,6 @@ public class Informacion extends JPanel implements ActionListener {
     
     int deltaY = 5, fuente = 50;
     
-    @SuppressWarnings("unused")
     public JFrame info;
     
     public void paintComponent(Graphics g) {
@@ -189,6 +187,7 @@ public class Informacion extends JPanel implements ActionListener {
             }
         
         });
+        
         timer.start();
         
     }
