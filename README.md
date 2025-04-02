@@ -26,5 +26,5 @@ Expandir mis conocimientos en Java y la elaboracion de GUI utilizando la bibliot
 
 <h3>Archivo Ejecutable</h3>
 Por si no poseen el JRE (Java Runtime Environment)de Java instalado, en el siguiente link de Mediafire se encuentra un archivo .rar que contiene el .exe ejecutable (y portable) del juego desarrollado en este repositorio.
-
+<h6></h6>
 https://www.mediafire.com/file/37o52e5x57b89k4/GAME_FINDER.rar/file
