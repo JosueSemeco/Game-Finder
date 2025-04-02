@@ -21,5 +21,10 @@ Al ingresar en este modulo, se te presentaran dos opciones seguidas por un texto
 <h3>Informacion</h3>
 Esta representado mediante un icono azul con un signo de exclamacion (!) en su interior, al hacer clic en este modulo, se presentaran en forma de creditos de pelicula (idea extraida de Star Wars) los participantes en este proyecto y la seccion y profesor que evalua el proyecto.
 
-<h1>Que se busca lograr con este proyecto?</h1>
-Expandir mis conocimientos en Java y la elaboracion de GUI utilizando la biblioteca javax.swing, logrando asi la creacion del entorno grafico deseado e imaginado\
+<h3>Que se busca lograr con este proyecto?</h3>
+Expandir mis conocimientos en Java y la elaboracion de GUI utilizando la biblioteca javax.swing, logrando asi la creacion del entorno grafico deseado e imaginado
+
+<h3>Archivo Ejecutable</h3>
+Por si no poseen el JRE (Java Runtime Environment)de Java instalado, en el siguiente link de Mediafire se encuentra un archivo .rar que contiene el .exe ejecutable (y portable) del juego desarrollado en este repositorio.
+
+https://www.mediafire.com/file/37o52e5x57b89k4/GAME_FINDER.rar/file
