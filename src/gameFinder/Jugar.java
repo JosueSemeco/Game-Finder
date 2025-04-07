@@ -53,7 +53,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
     private Set<String> juegosUsados;
     private String juegoActual;
     private Dimension size;
-    private List<JLabel> tileLabels = new ArrayList<>(); // List to hold the tile labels
+    private List<JLabel> tileLabels = new ArrayList<>();
 
     public void paintComponent(Graphics g) {
 
@@ -130,7 +130,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             try {
             	
                 corazones[i] = new JLabel(new ImageIcon("img/ICONOS/fillHeart.png"));
-                corazones[i].setBounds(535 + (i * 70), 20, 66, 61); // Ajustado para que no se superpongan
+                corazones[i].setBounds(535 + (i * 70), 20, 66, 61);
                 this.add(corazones[i]);
                 
             } catch (Exception e) {
@@ -149,11 +149,11 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         
         inicializarJuegos();
 
-        // Inicializar juegos usados
+        // juegos usados
         
         juegosUsados = new HashSet<>();
 
-        // Campo de texto con autocompletado
+        // textfield
         
         input = new JTextField();
         input.setBounds(490, 700, 300, 60);
@@ -229,7 +229,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         siguiente.setVisible(false);
         this.add(siguiente);
 
-        // Seleccionar juego aleatorio
+        // juego aleatorio
         
         juegoActual = seleccionarJuegoAleatorio();
         
@@ -248,7 +248,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             actualizarTextoLabel(nombreOculto, textoOculto);
             this.add(nombreOculto);
 
-            // Mostrar la portada del juego inicial
+            // portada del juego inicial
             
             mostrarPortada(juegoActual);
             
@@ -256,32 +256,26 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         
     }
 
-    // Método para actualizar el texto del JLabel y centrarlo
+    // actualizar el texto del JLabel y centrarlo
     
     private void actualizarTextoLabel(JLabel label, String nuevoTexto) {
     	
         label.setText(nuevoTexto);
         label.setFont(loadPixelFont("Hardpixel.OTF", 30));
         
-        // Recalcular el tamaño preferido
-        
         size = label.getPreferredSize();
-        label.setSize(size.width, size.height); // Establecer tamaño preferido
+        label.setSize(size.width, size.height);
 
         x = (jugar.getWidth() - size.width) / 2;
         y = 635;
-
-        // Establecer la posición del JLabel
         
         label.setLocation(x, y);
-
-        // Revalidate y Repaint
         
         label.revalidate();
         label.repaint();
     }
 
-    // Inicializar lista de juegos
+    // lista de juegos
     
     private void inicializarJuegos() {
     	
@@ -305,7 +299,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         
     }
 
-    // Selecciona un juego aleatorio de la lista que no haya sido usado
+    // juego aleatorio de la lista que no haya sido usado
     
     private String seleccionarJuegoAleatorio() {
     	
@@ -323,7 +317,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         
     }
 
-    // Muestra la portada del juego
+    // portada del juego
     
     private void mostrarPortada(String juego) {
     	
@@ -342,12 +336,8 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             Image scaledImage = image.getScaledInstance(portadaLabel.getWidth(), portadaLabel.getHeight(), Image.SCALE_SMOOTH);
             portadaLabel.setIcon(new ImageIcon(scaledImage));
             
-            // Asegurarse de que la portadaLabel sea visible y esté por encima de las imágenes pixeladas
-            
             portadaLabel.setVisible(true);
             this.setComponentZOrder(portadaLabel, 0);
-            
-            // Cargar y colocar las imágenes pixeladas
             
             cargarImagenesPixeladas(juego);
             
@@ -360,11 +350,9 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         
     }
 
-    // Carga y coloca las imágenes pixeladas sobre la portada
+    // imágenes pixeladas sobre la portada
     
     private void cargarImagenesPixeladas(String juego) {
-    	
-        // Remover etiquetas de tiles anteriores
     	
         for (JLabel tileLabel : tileLabels) {
         	
@@ -398,7 +386,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
                     tileLabel.setBounds(portadaLabel.getX() + (j - 1) * tileWidth, portadaLabel.getY() + (i - 1) * tileHeight, tileWidth, tileHeight);
                     this.add(tileLabel);
                     tileLabels.add(tileLabel);
-                    this.setComponentZOrder(tileLabel, 0); // Asegurarse de que las imágenes pixeladas estén por encima de la portada original
+                    this.setComponentZOrder(tileLabel, 0);
                     
                 } catch (IOException e) {
                 	
@@ -410,14 +398,12 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             
         }
         
-        // Actualizar el panel para mostrar las nuevas etiquetas de tiles
-        
         this.revalidate();
         this.repaint();
         
     }
 
-    // Oculta el nombre del juego con "?"
+    // nombre del juego con "?"
     
     private String ocultarNombre(String nombre) {
     	
@@ -427,21 +413,17 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
 
     // Verifica si la respuesta ingresada es correcta
     
-    @SuppressWarnings("unused")
+    @SuppressWarnings({ "unused", "deprecation" })
 	private void verificarRespuesta() {
     	
         String respuesta = input.getText().trim().toUpperCase();
 
         if (juegoActual != null && juegos.containsKey(juegoActual) && juegos.get(juegoActual).equals(respuesta)) {
         	
-            puntaje += vidas;  // Suma puntos según las vidas
-            
-            // Mostrar la portada en buena calidad y revelar el nombre del juego
+            puntaje += vidas;
             
             mostrarPortadaNormal(juegoActual);
             actualizarTextoLabel(nombreOculto, juegoActual);
-            
-            // Ocultar el botón de enviar y mostrar el botón de siguiente
             
             enviar.setVisible(false);
             siguiente.setVisible(true);
@@ -453,6 +435,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             
             if (vidas == 0) {
             	
+            	Jugar.jugar.disable();
                 DefeatFrame def = new DefeatFrame();
                 guardarResultado(User.usuario, puntaje);
                 
@@ -461,11 +444,11 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             
         }
         
-        input.setText(""); // Limpiar el campo después de enviar
+        input.setText("");
         
     }
 
-    // Método para guardar el resultado en la base de datos
+    // guardar el resultado en la base de datos
     
     private void guardarResultado(String usuario, int puntaje) {
     	
@@ -473,7 +456,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         
     }
 
-    // Mostrar la portada normal del juego
+    // portada normal del juego
     
     private void mostrarPortadaNormal(String juego) {
     	
@@ -491,7 +474,6 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             Image image = ImageIO.read(archivo);
             Image scaledImage = image.getScaledInstance(portadaLabel.getWidth(), portadaLabel.getHeight(), Image.SCALE_SMOOTH);
             portadaLabel.setIcon(new ImageIcon(scaledImage));
-            // Asegurarse de que la portadaLabel sea visible y esté por encima de las imágenes pixeladas
             portadaLabel.setVisible(true);
             this.setComponentZOrder(portadaLabel, 0);
         
@@ -520,7 +502,6 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             int index = random.nextInt(tileLabels.size());
             JLabel tileLabel = tileLabels.remove(index);
             this.remove(tileLabel);
-            // Actualizar el panel para reflejar la eliminación de la imagen
             this.revalidate();
             this.repaint();
             
@@ -528,7 +509,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
         
     }
 
-    // Cargar un nuevo juego
+    // nuevo juego
     
     @SuppressWarnings("unused")
 	private void siguienteJuego() {
@@ -540,8 +521,7 @@ public class Jugar extends JPanel implements ActionListener, KeyListener {
             actualizarTextoLabel(nombreOculto, ocultarNombre(juegoActual));
             puntajeLabel.setText("PUNTAJE: " + puntaje);
             actualizarVidas();
-            mostrarPortada(juegoActual); // Mostrar la portada en buena calidad
-            // Ocultar el botón de siguiente y mostrar el botón de enviar
+            mostrarPortada(juegoActual);
             siguiente.setVisible(false);
             enviar.setVisible(true);
         
